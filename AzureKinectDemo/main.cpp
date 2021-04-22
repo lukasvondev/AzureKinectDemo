@@ -135,7 +135,8 @@ int main(int argc, char** argv) {
 			imshow("depth", depth_frame);
 
 			key = waitKey(10);
-
+			
+			// ESC ÍË³ö
 			if (key == 27)
 			{
 				color_frame.release();
@@ -144,6 +145,7 @@ int main(int argc, char** argv) {
 				dev.close();
 				break;
 			}
+			// Space ±£´æÍ¼Æ¬
 			if (key == 32)
 			{
 				string dt = GetSystemTime();
