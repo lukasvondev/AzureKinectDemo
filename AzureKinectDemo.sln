@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AzureKinectDemo", "AzureKin
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PointCloudDemo", "PointCloudDemo\PointCloudDemo.vcxproj", "{8E5E0A46-2386-4514-9164-42DA4B7D902A}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Recorder", "Recorder\Recorder.vcxproj", "{BC62F9A7-0E45-4D09-BE4B-CF826BEED0BD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{8E5E0A46-2386-4514-9164-42DA4B7D902A}.Release|x64.Build.0 = Release|x64
 		{8E5E0A46-2386-4514-9164-42DA4B7D902A}.Release|x86.ActiveCfg = Release|Win32
 		{8E5E0A46-2386-4514-9164-42DA4B7D902A}.Release|x86.Build.0 = Release|Win32
+		{BC62F9A7-0E45-4D09-BE4B-CF826BEED0BD}.Debug|x64.ActiveCfg = Debug|x64
+		{BC62F9A7-0E45-4D09-BE4B-CF826BEED0BD}.Debug|x64.Build.0 = Debug|x64
+		{BC62F9A7-0E45-4D09-BE4B-CF826BEED0BD}.Debug|x86.ActiveCfg = Debug|Win32
+		{BC62F9A7-0E45-4D09-BE4B-CF826BEED0BD}.Debug|x86.Build.0 = Debug|Win32
+		{BC62F9A7-0E45-4D09-BE4B-CF826BEED0BD}.Release|x64.ActiveCfg = Release|x64
+		{BC62F9A7-0E45-4D09-BE4B-CF826BEED0BD}.Release|x64.Build.0 = Release|x64
+		{BC62F9A7-0E45-4D09-BE4B-CF826BEED0BD}.Release|x86.ActiveCfg = Release|Win32
+		{BC62F9A7-0E45-4D09-BE4B-CF826BEED0BD}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
