@@ -83,6 +83,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
+    <LibraryPath>D:\PCL 1.10.1\lib;D:\PCL 1.10.1\3rdParty\Boost\lib;D:\PCL 1.10.1\3rdParty\FLANN\lib;D:\PCL 1.10.1\3rdParty\Qhull\lib;D:\PCL 1.10.1\3rdParty\VTK\lib;C:\Program Files\OpenNI2\Lib;D:\OpenCV\opencv\build\x64\vc15\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Program Files\OpenNI2\Include;D:\PCL 1.10.1\include\pcl-1.10;D:\PCL 1.10.1\3rdParty\Boost\include\boost-1_72;D:\PCL 1.10.1\3rdParty\FLANN\include;D:\PCL 1.10.1\3rdParty\Eigen\eigen3;D:\PCL 1.10.1\3rdParty\Qhull\include;D:\PCL 1.10.1\3rdParty\VTK\include\vtk-8.2;D:\OpenCV\opencv\build\include;D:\OpenCV\opencv\build\include\opencv2;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
