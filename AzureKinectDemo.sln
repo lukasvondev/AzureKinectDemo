@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PointCloudDemo", "PointClou
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Recorder", "Recorder\Recorder.vcxproj", "{BC62F9A7-0E45-4D09-BE4B-CF826BEED0BD}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Playback", "Playback\Playback.vcxproj", "{107F0C16-9348-4F24-938E-3221A5CC813A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -41,6 +43,14 @@ Global
 		{BC62F9A7-0E45-4D09-BE4B-CF826BEED0BD}.Release|x64.Build.0 = Release|x64
 		{BC62F9A7-0E45-4D09-BE4B-CF826BEED0BD}.Release|x86.ActiveCfg = Release|Win32
 		{BC62F9A7-0E45-4D09-BE4B-CF826BEED0BD}.Release|x86.Build.0 = Release|Win32
+		{107F0C16-9348-4F24-938E-3221A5CC813A}.Debug|x64.ActiveCfg = Debug|x64
+		{107F0C16-9348-4F24-938E-3221A5CC813A}.Debug|x64.Build.0 = Debug|x64
+		{107F0C16-9348-4F24-938E-3221A5CC813A}.Debug|x86.ActiveCfg = Debug|Win32
+		{107F0C16-9348-4F24-938E-3221A5CC813A}.Debug|x86.Build.0 = Debug|Win32
+		{107F0C16-9348-4F24-938E-3221A5CC813A}.Release|x64.ActiveCfg = Release|x64
+		{107F0C16-9348-4F24-938E-3221A5CC813A}.Release|x64.Build.0 = Release|x64
+		{107F0C16-9348-4F24-938E-3221A5CC813A}.Release|x86.ActiveCfg = Release|Win32
+		{107F0C16-9348-4F24-938E-3221A5CC813A}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
