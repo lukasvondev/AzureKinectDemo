@@ -2,6 +2,7 @@
 * rgb + depth -> point cloud image
 * 根据彩色图和深度图生成点云
 */
+#pragma warning(disable:4996)
 #include <iostream>
 #include <fstream>
 #include <vector>
