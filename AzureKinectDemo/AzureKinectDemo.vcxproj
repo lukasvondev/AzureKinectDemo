@@ -144,6 +144,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="SmothDepthImage.cpp" />
     <ClCompile Include="StaticImageProperties.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -152,6 +153,7 @@
   <ItemGroup>
     <ClInclude Include="DepthPixelColorizer.h" />
     <ClInclude Include="k4aPixel.h" />
+    <ClInclude Include="SmothDepthImage.h" />
     <ClInclude Include="StaticImageProperties.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

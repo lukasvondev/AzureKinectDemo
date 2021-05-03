@@ -24,6 +24,7 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr RGBD2Cloud(const k4a::image& color_img, c
 
 int main(int argc, char** argv)
 {
+	string cloud_save_path = "model.ply";
 	if (argc != 3)
 	{
 		cout << "Error!Please enter as following format:" << endl;
@@ -35,11 +36,14 @@ int main(int argc, char** argv)
 	string depth_image_path = argv[2];
 
 	Mat color_frame = imread(color_image_path, IMREAD_UNCHANGED);
+
 	if (color_frame.empty() || color_frame.depth() != CV_8U)
 	{
 		cerr << "[WARNING]:cannot read color image. No such a file, or the image format is not CV_8U." << endl;
 	}
+
 	Mat depth_frame = imread(depth_image_path, IMREAD_ANYDEPTH);
+
 	if (depth_frame.empty() || depth_frame.depth() != CV_16U)
 	{
 		cerr << "[WARNING]:cannot read depth image. No such a file, or the image format is not CV_16U." << endl;
@@ -66,6 +70,7 @@ int main(int argc, char** argv)
 
 	pcl::PointCloud<pcl::PointXYZRGB>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZRGB>);
 	/*
+	//读取.ply格式点云文件
 	if (pcl::io::loadPLYFile<pcl::PointXYZ>("C:/Users/Ding/Desktop/bunny/reconstruction/bun_zipper.ply", *cloud) == -1) //* load the file
 	{
 		PCL_ERROR("Couldn't read file test_pcd.pcd \n");
@@ -73,9 +78,14 @@ int main(int argc, char** argv)
 		return (-1);
 	}
 	*/
+	
+	// 保存点云数据
+	
 	cloud = RGBD2Cloud(color_image, depth_image);
 	pcl::visualization::CloudViewer viewer("Viewer");
 	viewer.showCloud(cloud);
+
+	pcl::io::savePLYFile(cloud_save_path, *cloud);
 
 	system("PAUSE");
 
@@ -87,7 +97,7 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr RGBD2Cloud(const k4a::image& color_img, c
 	int color_image_width = color_img.get_width_pixels();
 	int color_image_height = color_img.get_height_pixels();
 
-	string path = "C:/Users/Ding/source/repos/AzureKinectDemo/AzureKinectDemo/calibration.json";
+	string path = "E:/vsProject/AzureKinectDemo/AzureKinectDemo/calibration.json";
 
 	k4a::calibration calibration = readCalibrationFromFile(path);
 	k4a::transformation transformation = k4a::transformation(calibration);

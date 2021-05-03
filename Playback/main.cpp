@@ -73,6 +73,9 @@ int main(int argc, char** argv)
 				depth_image.get_width_pixels(),
 				CV_8UC4,
 				depthTextureBuffer.data());
+
+			cv::imshow("color image", color_frame);
+			cv::imshow("depth image", depth_frame);
 		}
 		else
 		{

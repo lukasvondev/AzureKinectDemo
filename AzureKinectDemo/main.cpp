@@ -33,7 +33,7 @@ int main(int argc, char** argv) {
 	const uint32_t device_count = k4a::device::get_installed_count();
 	if (device_count == 0)
 	{
-		cout << "no azure kinect devices detected." << endl;
+		cout << "[WARNING]no azure kinect devices detected." << endl;
 		return 1;
 	}
 
@@ -46,10 +46,10 @@ int main(int argc, char** argv) {
 	config.synchronized_images_only = true;
 
 	// 打开设备
-	cout << "Start opening azure kinect device..." << endl;
+	cout << "[INFO]Start opening azure kinect device..." << endl;
 	k4a::device dev = k4a::device::open(K4A_DEVICE_DEFAULT);
 	dev.start_cameras(&config);
-	cout << "Finished opening azure kinect device..." << endl;
+	cout << "[INFO]Finished opening azure kinect device..." << endl;
 
 	// 畸变矫正参数
 	k4a::calibration calibration = dev.get_calibration(config.depth_mode, config.color_resolution);
@@ -76,6 +76,7 @@ int main(int argc, char** argv) {
 	Mat color_frame;
 	Mat irFrame;
 	Mat transformed_depth_frame;
+	Mat raw_depth_frame;
 
 	int key = NULL;
 
@@ -93,6 +94,7 @@ int main(int argc, char** argv) {
 	const string depth_image_path = path + "/Depth_Image/";
 	const string color_image_path = path + "/RGB_Image/";
 	const string transformed_depth_image_path = path + "/Transformed_Depth_Raw_Data/";
+	const string raw_depth_image_path = path + "/Raw_Depth_Image/";
 	const string suffix = ".png";
 
 	while (true)
@@ -108,6 +110,9 @@ int main(int argc, char** argv) {
 			color_frame = Mat(color_image.get_height_pixels(), color_image.get_width_pixels(), CV_8UC4, colorTextureBuffer);
 
 			// depth
+
+			raw_depth_frame = Mat(depth_image.get_height_pixels(), depth_image.get_width_pixels(), CV_16U, depth_image.get_buffer());
+
 			sip::ColorizeDepthImage(depth_image,
 				dpc::DepthPixelColorizer::ColorizeBlueToRed,
 				sip::GetDepthModeRange(config.depth_mode),
@@ -149,10 +154,13 @@ int main(int argc, char** argv) {
 			if (key == 32)
 			{
 				string dt = GetSystemTime();
+				
 				imwrite(color_image_path + dt + suffix, color_frame);
 				imwrite(depth_image_path + dt + suffix, depth_frame);
 				imwrite(transformed_depth_image_path + dt + suffix, transformed_depth_frame);
-				cout << "Image saved." << endl;
+				imwrite(raw_depth_image_path + dt + suffix, raw_depth_frame);
+
+				cout << "[INFO]Image have been saved. Time: " << dt << endl;
 			}
 		}
 	}
