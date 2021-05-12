@@ -1,5 +1,5 @@
 /*
-* rgb + depth -> point cloud image
+* rgb image + transformed depth image -> point cloud image
 * 根据彩色图和深度图生成点云
 */
 #pragma warning(disable:4996)
@@ -13,6 +13,7 @@
 #include <k4a/k4a.hpp>
 
 #include <pcl/io/ply_io.h>
+
 #include <pcl/impl/point_types.hpp>
 #include <pcl/visualization/cloud_viewer.h>
 
@@ -27,7 +28,7 @@ int main(int argc, char** argv)
 	string cloud_save_path = "model.ply";
 	if (argc != 3)
 	{
-		cout << "Error!Please enter as following format:" << endl;
+		cout << "[Error]:Please enter as following format:" << endl;
 		cout << "PointCloudDemo.exe [color image path] [depth image path]" << endl;
 		return 1;
 	}
@@ -39,14 +40,14 @@ int main(int argc, char** argv)
 
 	if (color_frame.empty() || color_frame.depth() != CV_8U)
 	{
-		cerr << "[WARNING]:cannot read color image. No such a file, or the image format is not CV_8U." << endl;
+		cerr << "[WARNING]:Cannot read color image. No such a file, or the image format is not CV_8U." << endl;
 	}
 
 	Mat depth_frame = imread(depth_image_path, IMREAD_ANYDEPTH);
 
 	if (depth_frame.empty() || depth_frame.depth() != CV_16U)
 	{
-		cerr << "[WARNING]:cannot read depth image. No such a file, or the image format is not CV_16U." << endl;
+		cerr << "[WARNING]:Cannot read depth image. No such a file, or the image format is not CV_16U." << endl;
 	}
 
 	k4a::image color_image = NULL;
@@ -78,9 +79,9 @@ int main(int argc, char** argv)
 		return (-1);
 	}
 	*/
-	
+
 	// 保存点云数据
-	
+
 	cloud = RGBD2Cloud(color_image, depth_image);
 	pcl::visualization::CloudViewer viewer("Viewer");
 	viewer.showCloud(cloud);
@@ -130,7 +131,8 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr RGBD2Cloud(const k4a::image& color_img, c
 			uint8_t a = color_buffer[4 * idx + 3];
 			if (depth <= .0f || a == 0)
 			{
-				point.x = point.y = point.z = numeric_limits<float>::quiet_NaN();
+				//point.x = point.y = point.z = numeric_limits<float>::quiet_NaN();
+				point.x = point.y = point.z = .0;
 				point.r = point.g = point.b = 0;
 			}
 			else

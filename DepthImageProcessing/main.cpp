@@ -1,5 +1,7 @@
 ﻿#include <iostream>
 #include <string>
+#include <fstream>
+
 #include <opencv2/opencv.hpp>
 
 cv::Mat convert16UTo8U(cv::Mat src);
@@ -23,13 +25,15 @@ int main(int argc, char** argv)
 
 		cv::imshow("smoothed_img1_U8", smoothed_img1_U8);
 		cv::imshow("smoothed_img2_U8", smoothed_img2_U8);
+
 		cv::imshow("absdiff result", dst);
 		cv::waitKey();
+		cv::imwrite(R"(C:\Users\Ding\Desktop\diff.png)", diff);
 	}
 	return EXIT_SUCCESS;
 }
 /// <summary>
-/// smooth_depth_image
+/// Smooth depth image
 /// </summary>
 /// <param name="src">source depth image you want to smooth, data type uint16</param>
 /// <param name="max_hole_size">max value of hole size that you want to make up</param>
@@ -74,7 +78,7 @@ cv::Mat smoothDepthImage(cv::Mat src, const int max_hole_size)
 	return dst;
 }
 /// <summary>
-/// convert image that data type is uint16 into uint8
+/// Convert image that data type is uint16 into uint8
 /// </summary>
 /// <param name="src">source depth image, data type uint16</param>
 /// <returns>destination depth image, data type uint8</returns>
@@ -113,6 +117,7 @@ bool depthImageDiff(cv::Mat background, cv::Mat depth_image, cv::Mat* dst, uint1
 			if (data_1 - data_2 > threshold)
 			{
 				dst->ptr<uint16_t>(row)[col] = data_2;
+				//std::cout << data_2 << std::endl;
 			}
 		}
 	}
