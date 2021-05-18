@@ -121,6 +121,11 @@ pcl::PointCloud<pcl::PointXYZRGB>::Ptr RGBD2Cloud(const k4a::image& color_img, c
 	float fy = intrinsic_color->param.fy;
 	float cx = intrinsic_color->param.cx;
 	float cy = intrinsic_color->param.cy;
+	
+	cout << "fx: " << fx << endl;
+	cout << "fy: " << fy << endl;
+	cout << "cx: " << cx << endl;
+	cout << "cy: " << cy << endl;
 
 	for (int y = 0, idx = 0; y < color_image_height; y++)
 	{
